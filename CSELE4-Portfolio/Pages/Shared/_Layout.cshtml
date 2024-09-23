@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Timy Villarmia</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CSELE4_Portfolio.styles.css" asp-append-version="true" />
+</head>
+<body class="row">  
+    <header class="col-2">
+        <nav>
+            <div class="logo">
+                Timy Villarmia
+            </div>
+            <div class="introduction">
+                <p>
+                    I'm Timy Villarmia, a 4th-year computer science student with a wide range of interests Full-stack Development, AI, human-computer interaction, and everything in between.
+                </p>
+            </div>
+            <div class="mobile-nav">
+                <span class="material-symbols-outlined">
+                    menu
+                </span>
+            </div>
+            <div class="nav-links">
+                <a class="btn" asp-area="" asp-page="/Work">
+                    <div class="btn-content">
+                        <div>
+                            <div class="btn-img">
+                                <img src="~/images/cube1.png" alt="">
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="btn-title">Work</h1>
+                            <p class="btn-desc">A selection of recent work</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="btn">
+                    <div class="btn-content">
+                        <div>
+                            <div class="btn-img">
+                                <img src="~/images/cube2.png" alt="">
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="btn-title">Play</h1>
+                            <p class="btn-desc">Making things for fun</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="btn active"  asp-area="" asp-page="/Index">
+                    <div class="btn-content">
+                        <div>
+                            <div class="btn-img">
+                                <img src="~/images/cube3.png" alt="">
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="btn-title">About</h1>
+                            <p class="btn-desc">Let's get to know each other</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="col-10">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
