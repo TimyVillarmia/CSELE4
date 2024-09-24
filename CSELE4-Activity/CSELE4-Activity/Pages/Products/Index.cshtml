@@ -1,0 +1,34 @@
+﻿@page
+@model CSELE4_Activity.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<div class="row">
+    @foreach (var item in Model.Product)
+    {
+        <div class="col-3 p-1">
+            <div class="card h-100">
+                <img src="/images/products/@item.ProductImageFile" class="img-fluid card-img-top" alt="@item.ProductImageFile" />
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">@item.Description</p>
+                    <p class="card-text">@item.Category</p>
+                    <div class="d-flex justify-content-between">
+                    <span class="card-text">@(item.Price.ToString("c"))</span>
+                    <a class="btn btn-danger btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
+@*                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> *@
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
