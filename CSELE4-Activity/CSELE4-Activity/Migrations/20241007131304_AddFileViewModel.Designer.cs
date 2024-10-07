@@ -3,6 +3,7 @@ using CSELE4_Activity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSELE4_Activity.Migrations
 {
     [DbContext(typeof(CSELE4_ActivityContext))]
-    partial class CSELE4_ActivityContextModelSnapshot : ModelSnapshot
+    [Migration("20241007131304_AddFileViewModel")]
+    partial class AddFileViewModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
