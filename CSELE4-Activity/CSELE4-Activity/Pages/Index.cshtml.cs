@@ -21,6 +21,7 @@ namespace CSELE4_Activity.Pages
         public async Task OnGetAsync()
         {
             Product = await _context.Product.ToListAsync();
+            
         }
     }
 }

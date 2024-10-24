@@ -78,7 +78,7 @@
                 <div class="d-inline-flex w-100 p-2" style="border:1px solid black">
                     <h1>ALL PRODUCTS</h1>
                     <button style="float:right;">
-                        <a asp-page="Create" id="btnclick">Add Product +</a>
+                        <a asp-page="./Products/Create" id="btnclick">Add Product +</a>
                     </button>
                 </div>
                 <div>
@@ -94,7 +94,7 @@
                                         @*                         <p class="card-text" style="margin-bottom:0;">@item.Category</p> *@
                                         <div class="d-flex justify-content-between">
                                             <span class="card-text" style=" font-size:20px; font-weight:bold;">@(item.Price.ToString("c"))</span>
-                                            <a class="btn btn-danger btn-sm" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                                            <a class="btn btn-danger btn-sm" asp-page="./Products/Edit" asp-route-id="@item.Id">Edit</a>
                                             @*                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                                         <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> *@
                                         </div>

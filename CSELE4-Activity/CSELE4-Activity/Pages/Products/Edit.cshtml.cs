@@ -8,20 +8,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CSELE4_Activity.Data;
 using CSELE4_Activity.Model;
+using System.IO;
+using CSELE4_Activity.Services;
 
 namespace CSELE4_Activity.Pages.Products
 {
     public class EditModel : PageModel
     {
         private readonly CSELE4_Activity.Data.CSELE4_ActivityContext _context;
+        private readonly IFormFileService _formFileService;
 
-        public EditModel(CSELE4_Activity.Data.CSELE4_ActivityContext context)
+        public EditModel(CSELE4_Activity.Data.CSELE4_ActivityContext context, IFormFileService formFileService)
         {
             _context = context;
+            _formFileService = formFileService;
         }
 
         [BindProperty]
         public Product Product { get; set; } = default!;
+        public ProductViewModel ProductVM { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -35,6 +40,8 @@ namespace CSELE4_Activity.Pages.Products
             {
                 return NotFound();
             }
+    
+
             Product = product;
             return Page();
         }
@@ -66,7 +73,8 @@ namespace CSELE4_Activity.Pages.Products
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("../Index");
+
         }
 
         private bool ProductExists(int id)

@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using CSELE4_Activity.Data;
+using CSELE4_Activity.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IFormFileService, FormFileService>();
 builder.Services.AddDbContext<CSELE4_ActivityContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CSELE4_ActivityContext") ?? throw new InvalidOperationException("Connection string 'CSELE4_ActivityContext' not found.")));
 

@@ -40,8 +40,9 @@
 
                 <div class="form-group">
                     <label asp-for="Product.FormFile" class="control-label">Image</label>
-                    <input type="file" asp-for="Product.FormFile" class="form-control" />
+                    <input type="file" asp-for="Product.FormFile" class="form-control" id="formfile" />
                     <span asp-validation-for="Product.FormFile" class="text-danger"></span>
+                    <img id="ImgPreview" class="img-fluid bg-secondary" width="350" height="350" />
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" style="float:right; margin-top:10px;" />
@@ -56,4 +57,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 }

@@ -26,7 +26,7 @@ namespace CSELE4_Activity.Model
         public double Price { get; set; }
 
         [Display(Name = "Product Image")]
-        public IFormFile FormFile { get; set; }
+        public IFormFile? FormFile { get; set; }
     }
 }
 

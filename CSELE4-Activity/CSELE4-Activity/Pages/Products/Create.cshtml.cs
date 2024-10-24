@@ -11,16 +11,20 @@ using Microsoft.EntityFrameworkCore;
 using System.IO.Compression;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using CSELE4_Activity.Services;
+using System.IO;
 
 namespace CSELE4_Activity.Pages.Products
 {
     public class CreateModel : PageModel
     {
         private readonly CSELE4_Activity.Data.CSELE4_ActivityContext _context;
+        private readonly IFormFileService _formFileService;
 
-        public CreateModel(CSELE4_Activity.Data.CSELE4_ActivityContext context)
+        public CreateModel(CSELE4_Activity.Data.CSELE4_ActivityContext context, IFormFileService formFileService)
         {
             _context = context;
+            _formFileService = formFileService;
         }
 
         public IActionResult OnGet()
@@ -38,34 +42,29 @@ namespace CSELE4_Activity.Pages.Products
             {
                 return Page();
             }
-
-            using (var memoryStream = new MemoryStream())
+       
+            try
             {
-                await Product.FormFile.CopyToAsync(memoryStream);
-
-                // Upload the file if less than 2 MB
-                if (memoryStream.Length < 2097152)
+                var new_product = new Product
                 {
-                    
-                    var new_product = new Product
-                    {
-                        Name = Product.Name,
-                        Description = Product.Description,
-                        Category = Product.Category,
-                        Price = Product.Price,
-                        Content = memoryStream.ToArray()
-                    };
+                    Name = Product.Name,
+                    Description = Product.Description,
+                    Category = Product.Category,
+                    Price = Product.Price,
+                    Content = _formFileService.ConvertToByteArray(Product.FormFile)
+                };
 
-                    _context.Product.Add(new_product);
-                    await _context.SaveChangesAsync();
-                }
-                else
-                {
-                    ModelState.AddModelError("File", "The file is too large.");
-                }
+                _context.Product.Add(new_product);
+                await _context.SaveChangesAsync();
             }
-  
-            return RedirectToPage("./Index");
+            catch (ArgumentException ex)
+            {
+                ModelState.AddModelError("File", ex.Message);
+
+            }
+
+
+            return RedirectToPage("../Index");
 
         }
 
