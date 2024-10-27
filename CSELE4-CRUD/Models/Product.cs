@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CSELE4_CRUD.Models
 {
@@ -12,5 +13,6 @@ namespace CSELE4_CRUD.Models
         public string Category { get; set; }
         public double Price { get; set; }
         public byte[]? Content { get; set; }
+
     }
 }

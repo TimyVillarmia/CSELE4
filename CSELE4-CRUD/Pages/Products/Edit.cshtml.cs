@@ -29,7 +29,8 @@ namespace CSELE4_CRUD.Pages.Products
         public Product Product { get; set; } = default!;
 
         [BindProperty]
-        public byte[]? ProductImage { get; set; }
+        public byte[]? PrevProductImage { get; set; }
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -44,7 +45,7 @@ namespace CSELE4_CRUD.Pages.Products
                 return NotFound();
             }
             Product = product;
-            ProductImage = product.Content;
+            PrevProductImage = product.Content;
             //ProductImage = product.Content == null ? string.Empty : $"data:image;base64,{Convert.ToBase64String(product.Content)}";
            
             return Page();
@@ -52,7 +53,7 @@ namespace CSELE4_CRUD.Pages.Products
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync(IFormFile productImage)
+        public async Task<IActionResult> OnPostAsync(IFormFile? productImage)
         {
             if (!ModelState.IsValid)
             {
@@ -69,7 +70,7 @@ namespace CSELE4_CRUD.Pages.Products
                 }
                 else
                 {
-                    Product.Content = ProductImage;
+                    Product.Content = PrevProductImage;
                 }
 
                 _context.Attach(Product).State = EntityState.Modified;
