@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using CSELE4_CRUD.Data;
 using CSELE4_Activity.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<IFormFileService, FormFileService>();
 builder.Services.AddDbContext<CSELE4_CRUDContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CSELE4_CRUDContext") ?? throw new InvalidOperationException("Connection string 'CSELE4_CRUDContext' not found.")));
+
+
 
 var app = builder.Build();
 
@@ -21,11 +24,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapRazorPages();

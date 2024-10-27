@@ -1,7 +1,10 @@
-﻿namespace CSELE4_CRUD.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CSELE4_CRUD.Models
 {
     public class Product
     {
+
 
         public int Id { get; set; }
         public string Name { get; set; }

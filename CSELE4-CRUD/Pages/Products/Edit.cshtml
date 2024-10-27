@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Product.Id" />
             <div class="form-group">
@@ -36,8 +36,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Product.Content" class="control-label"></label>
-                <input asp-for="Product.Content" class="form-control" />
+                <input type="file" name="productImage" asp-for="Product.Content" class="form-control" id="formfile" />
                 <span asp-validation-for="Product.Content" class="text-danger"></span>
+                <img id="ImgPreview" class="img-fluid bg-secondary" src="@Model.ProductImage" width="350" height="350" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
