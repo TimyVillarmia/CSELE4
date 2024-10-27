@@ -10,6 +10,7 @@ using CSELE4_CRUD.Data;
 using CSELE4_CRUD.Models;
 using CSELE4_Activity.Services;
 using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace CSELE4_CRUD.Pages.Products
 {
@@ -28,7 +29,7 @@ namespace CSELE4_CRUD.Pages.Products
         public Product Product { get; set; } = default!;
 
         [BindProperty]
-        public string ProductImage { get; set; }
+        public byte[]? ProductImage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -43,7 +44,9 @@ namespace CSELE4_CRUD.Pages.Products
                 return NotFound();
             }
             Product = product;
-            ProductImage = Product.Content == null ? "" : $"data:image;base64,{Convert.ToBase64String(Product.Content)}";
+            ProductImage = product.Content;
+            //ProductImage = product.Content == null ? string.Empty : $"data:image;base64,{Convert.ToBase64String(product.Content)}";
+           
             return Page();
         }
 
@@ -59,7 +62,16 @@ namespace CSELE4_CRUD.Pages.Products
             try
             {
 
-                Product.Content = _formFileService.ConvertToByteArray(productImage);
+                if (productImage != null)
+                {
+                    Product.Content = _formFileService.ConvertToByteArray(productImage);
+
+                }
+                else
+                {
+                    Product.Content = ProductImage;
+                }
+
                 _context.Attach(Product).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
