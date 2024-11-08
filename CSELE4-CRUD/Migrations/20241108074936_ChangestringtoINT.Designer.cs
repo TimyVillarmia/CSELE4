@@ -4,6 +4,7 @@ using CSELE4_CRUD.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSELE4_CRUD.Migrations
 {
     [DbContext(typeof(CSELE4_CRUDContext))]
-    partial class CSELE4_CRUDContextModelSnapshot : ModelSnapshot
+    [Migration("20241108074936_ChangestringtoINT")]
+    partial class ChangestringtoINT
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

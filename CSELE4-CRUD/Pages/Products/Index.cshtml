@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <h5 class="card-title" style="margin-bottom:0; font-size:25px;">@item.Name</h5>
                     <p class="card-text" style="margin-bottom:10px;">@item.Description</p>
-                    <p class="card-text" style="margin-bottom:0;">@item.ProductCategory.CategoryName</p> 
+                    <p class="card-text" style="margin-bottom:0;">@item.CategoryID</p> 
                     <div class="d-flex justify-content-between">
                         <span class="card-text" style=" font-size:20px; font-weight:bold;">@(item.Price.ToString("c"))</span>
                         <a class="btn btn-danger btn-sm" asp-page="./Products/Edit" asp-route-id="@item.Id">Edit</a>

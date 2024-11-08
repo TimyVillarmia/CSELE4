@@ -14,7 +14,7 @@ namespace CSELE4_CRUD.Models
 
         public string Description { get; set; }
         [Required]
-        public string CategoryID { get; set; }
+        public int CategoryID { get; set; }
         public ProductCategory? ProductCategory { get; set; }
         public double Price { get; set; }
 
