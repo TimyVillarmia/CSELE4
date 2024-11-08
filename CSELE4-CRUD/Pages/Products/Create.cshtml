@@ -5,50 +5,58 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Product</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="position-absolute top-50 start-50 translate-middle bg-light rounded">
+    <div class="py-3 px-4" style="width: 680px;">
+        <div class="row">
+            <h2 class="col">Add Product</h2>
+            <div class="col position-relative">
+                <a asp-page="Index" class="position-absolute top-0 end-0">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </a>
+            </div>
+        </div>
         <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group mb-2">
                 <label asp-for="Product.Name" class="control-label"></label>
                 <input asp-for="Product.Name" class="form-control" />
                 <span asp-validation-for="Product.Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-2">
                 <label asp-for="Product.Description" class="control-label"></label>
                 <input asp-for="Product.Description" class="form-control" />
                 <span asp-validation-for="Product.Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Product.Category" class="control-label"></label>
-                <input asp-for="Product.Category" class="form-control" />
-                <span asp-validation-for="Product.Category" class="text-danger"></span>
+            <div class="row mb-2">
+                <div class="form-group col ">
+                    <label asp-for="Product.Category" class="control-label"></label>
+                    <input asp-for="Product.Category" class="form-control" />
+                    <span asp-validation-for="Product.Category" class="text-danger"></span>
+                </div>
+                <div class="form-group col">
+                    <label asp-for="Product.Price" class="control-label"></label>
+                    <input asp-for="Product.Price" class="form-control" />
+                    <span asp-validation-for="Product.Price" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Product.Price" class="control-label"></label>
-                <input asp-for="Product.Price" class="form-control" />
-                <span asp-validation-for="Product.Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div class="form-group col mb-2">
                 <label asp-for="Product.Content" class="control-label"></label>
                 <input type="file" name="productImage" asp-for="Product.Content" class="form-control" id="formfile" accept=".jpg, .png" />
                 <span asp-validation-for="Product.Content" class="text-danger"></span>
                 <img id="ImgPreview" class="img-fluid bg-secondary" width="350" height="350" />
             </div>
-            <div class="form-group">
+            <div class="form-group col">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
+
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

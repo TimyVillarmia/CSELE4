@@ -8,10 +8,15 @@ namespace CSELE4_CRUD.Models
 
 
         public int Id { get; set; }
+
+        [Display(Name="Product Name")]
         public string Name { get; set; }
+
         public string Description { get; set; }
         public string Category { get; set; }
         public double Price { get; set; }
+
+        [Display(Name = "Image")]
         public byte[]? Content { get; set; }
 
     }
