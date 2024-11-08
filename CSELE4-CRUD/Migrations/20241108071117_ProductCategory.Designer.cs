@@ -4,6 +4,7 @@ using CSELE4_CRUD.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSELE4_CRUD.Migrations
 {
     [DbContext(typeof(CSELE4_CRUDContext))]
-    partial class CSELE4_CRUDContextModelSnapshot : ModelSnapshot
+    [Migration("20241108071117_ProductCategory")]
+    partial class ProductCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +33,7 @@ namespace CSELE4_CRUD.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CategoryID")
+                    b.Property<string>("Category")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -81,11 +84,9 @@ namespace CSELE4_CRUD.Migrations
 
             modelBuilder.Entity("CSELE4_CRUD.Models.Product", b =>
                 {
-                    b.HasOne("CSELE4_CRUD.Models.ProductCategory", "ProductCategory")
+                    b.HasOne("CSELE4_CRUD.Models.ProductCategory", null)
                         .WithMany("Products")
                         .HasForeignKey("ProductCategoryCategoryID");
-
-                    b.Navigation("ProductCategory");
                 });
 
             modelBuilder.Entity("CSELE4_CRUD.Models.ProductCategory", b =>

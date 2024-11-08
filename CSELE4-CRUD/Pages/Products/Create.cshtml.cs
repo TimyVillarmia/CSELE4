@@ -24,6 +24,7 @@ namespace CSELE4_CRUD.Pages.Products
 
         public IActionResult OnGet()
         {
+            ViewData["ProductCategoryID"] = new SelectList(_context.Category, "CategoryID", "CategoryName");
             return Page();
         }
 
@@ -45,7 +46,7 @@ namespace CSELE4_CRUD.Pages.Products
                 {
                     Name = Product.Name,
                     Description = Product.Description,
-                    Category = Product.Category,
+                    ProductCategory = Product.ProductCategory,
                     Price = Product.Price,
                     Content = _formFileService.ConvertToByteArray(productImage)
                 };
