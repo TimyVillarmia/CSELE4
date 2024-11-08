@@ -56,8 +56,26 @@
 
 
 
-
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $("#formfile").on("change", function () {
+            const [file] = formfile.files
+            if (file) {
+                const reader = new FileReader();
+                reader.addEventListener(
+                    "load",
+                    () => {
+                        // convert image file to base64 string
+                        ImgPreview.src = reader.result;
+                    },
+                    false,
+                );
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+    </script>
 }
