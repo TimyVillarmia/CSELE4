@@ -15,5 +15,7 @@ namespace CSELE4_CRUD.Data
         }
 
         public DbSet<CSELE4_CRUD.Models.Product> Product { get; set; } = default!;
+
+        public DbSet<CSELE4_CRUD.Models.ProductCategory> Category { get; set; } = default!;
     }
 }

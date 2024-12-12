@@ -23,3 +23,34 @@ html {
 body {
   margin-bottom: 60px;
 }
+.sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    height: 10vh;
+    position: fixed;
+    padding-top: 20px;
+    background-color: #111120;
+    color: white;
+    padding-bottom: 20px;
+    
+}
+
+    .sidebar a {
+        color: white;
+    }
+
+.nav-item {
+    padding-top: 30px;
+    position: center;
+    padding: 10%;
+}
+
+.nav-link text-dark {
+    color: white;
+}
+
+.container {
+    margin-left: 250px;
+    padding: 20px;
+    flex-grow: 1;
+}
